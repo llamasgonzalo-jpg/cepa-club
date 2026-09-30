@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cepa Club — Solicitud de admisión</title>
+<meta name="description" content="Solicitud de admisión a Cepa Club, club privado de acceso a cannabis medicinal en Mendoza.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#171011">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cepa Club — Solicitud de admisión">
+<meta property="og:description" content="Club privado de acceso a cannabis medicinal. Acceso por invitación.">
+<meta property="og:image" content="https://cepa-club.netlify.app/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1c1414;
+    --stone: #e7e2d5;
+    --paper: #f2eee2;
+    --wine: #5c1220;
+    --wine-strong: #45050f;
+    --gold: #8c6e33;
+    --moss: #4a5142;
+    --hairline: rgba(28, 20, 20, 0.2);
+    --field-line: rgba(28, 20, 20, 0.35);
+    --error: #9b1c2c;
+    --panel-bg: #171011;
+    --panel-ink: #ece6d8;
+    --panel-gold: #c9a054;
+
+    --font-display: 'Italiana', 'Times New Roman', serif;
+    --font-body: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    --font-label: 'Archivo Narrow', 'Arial Narrow', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #ece6d8;
+      --stone: #16110f;
+      --paper: #221a18;
+      --wine: #c24b5d;
+      --wine-strong: #d97285;
+      --gold: #c9a054;
+      --moss: #9aa38e;
+      --hairline: rgba(236, 230, 216, 0.2);
+      --field-line: rgba(236, 230, 216, 0.35);
+      --error: #e0707f;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--stone);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  h1, h2 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+
+  /* ---------- cover ---------- */
+  .cover {
+    background: var(--panel-bg);
+    color: var(--panel-ink);
+    text-align: center;
+    padding: 56px 24px 52px;
+  }
+  .cover .eyebrow { color: var(--panel-gold); }
+  .cover .logo { height: 190px; width: auto; display: block; margin: 26px auto 22px; }
+  .cover h1 { font-size: clamp(34px, 7vw, 46px); line-height: 1.1; }
+  .cover .lede {
+    max-width: 40ch;
+    margin: 16px auto 0;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(236, 230, 216, 0.88);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 640px;
+    margin: 36px auto 0;
+    border-top: 1px solid rgba(236, 230, 216, 0.22);
+  }
+  .step { padding: 18px 10px 0; }
+  .step .num { font-family: var(--font-display); font-size: 22px; color: var(--panel-gold); display: block; }
+  .step p {
+    font-family: var(--font-label);
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(236, 230, 216, 0.8);
+    line-height: 1.45;
+    margin-top: 4px;
+  }
+
+  /* ---------- form ---------- */
+  .form-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 56px 24px 72px;
+  }
+  .form-wrap h2 { font-size: clamp(28px, 5vw, 34px); margin-top: 8px; }
+  .form-wrap .intro { margin-top: 10px; color: var(--moss); font-size: 16px; }
+
+  form { margin-top: 30px; }
+
+  .field { margin-bottom: 24px; }
+  .field > label, .field > .legend {
+    display: block;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .field .opt { color: var(--moss); font-weight: 500; letter-spacing: 0.06em; text-transform: none; }
+
+  input[type="text"], input[type="tel"], input[type="email"], input[type="number"], select {
+    width: 100%;
+    font: inherit;
+    font-size: 18px;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--field-line);
+    border-radius: 0;
+    padding: 8px 0 9px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+    background-position: calc(100% - 12px) 55%, calc(100% - 6px) 55%;
+    background-size: 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 28px;
+  }
+  select option { color: #1c1414; background: #f2eee2; }
+  input:focus, select:focus { border-bottom: 2px solid var(--wine); padding-bottom: 8px; }
+  input::placeholder { color: var(--moss); opacity: 0.6; }
+
+  .row { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+
+  .choices { display: grid; gap: 8px; margin-top: 4px; }
+  .choice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--hairline);
+    background: var(--paper);
+    padding: 12px 14px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+  .choice input { accent-color: var(--wine); width: 18px; height: 18px; margin: 0; flex-shrink: 0; }
+  .choice:has(input:checked) { border-color: var(--wine); }
+
+  .consent {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    color: var(--moss);
+    line-height: 1.45;
+    cursor: pointer;
+  }
+  .field > label.consent { display: flex; font-family: var(--font-body); font-weight: 400; font-size: 15px; letter-spacing: 0; text-transform: none; color: var(--moss); margin: 0; }
+  .consent input { accent-color: var(--wine); width: 18px; height: 18px; margin: 2px 0 0; flex-shrink: 0; }
+
+  .err { display: none; color: var(--error); font-family: var(--font-label); font-size: 13px; margin-top: 6px; }
+  .field.invalid .err { display: block; }
+  .field.invalid input:not([type="radio"]):not([type="checkbox"]), .field.invalid select { border-bottom-color: var(--error); }
+
+  .submit {
+    width: 100%;
+    margin-top: 8px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f2eee2;
+    background: #5c1220;
+    border: 0;
+    padding: 18px 20px;
+    cursor: pointer;
+  }
+  .submit:hover { background: #45050f; }
+  .submit:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .submit[disabled] { opacity: 0.6; cursor: progress; }
+
+  .form-status { margin-top: 14px; font-family: var(--font-label); font-size: 14px; color: var(--error); min-height: 1em; }
+
+  .assurance {
+    margin-top: 34px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hairline);
+    font-size: 15px;
+    color: var(--moss);
+  }
+  .assurance b { font-weight: 500; color: var(--ink); }
+  .assurance p + p { margin-top: 8px; }
+
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  /* ---------- thanks ---------- */
+  .thanks { display: none; text-align: center; padding: 20px 0 10px; }
+  .thanks .emblem { font-family: var(--font-display); font-size: 40px; color: var(--gold); line-height: 1; }
+  .thanks h2 { margin-top: 14px; }
+  .thanks p { margin: 14px auto 0; max-width: 38ch; color: var(--moss); }
+  body.sent form, body.sent .form-head { display: none; }
+  body.sent .thanks { display: block; }
+
+  .wa-direct { margin-top: 28px; text-align: center; }
+  .wa-direct p { font-size: 15px; color: var(--moss); margin-bottom: 12px; }
+  .btn-wa {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    font-family: var(--font-label); font-weight: 600; font-size: 13.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; color: var(--wine); border: 1px solid var(--wine); padding: 16px 20px;
+  }
+  .btn-wa:hover { background: rgba(92, 18, 32, 0.07); }
+  .btn-wa svg { width: 18px; height: 18px; }
+  .thanks .btn-wa { margin-top: 26px; }
+
+  .foot {
+    text-align: center;
+    padding: 0 24px 48px;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .foot a { color: var(--gold); text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+
+  @media (max-width: 520px) {
+    .cover { padding: 36px 16px 34px; }
+    .cover .logo { height: 116px; margin: 18px auto 16px; }
+    .cover .lede { font-size: 17px; }
+    .steps { margin-top: 26px; }
+    .step { padding: 14px 4px 0; }
+    .step p { font-size: 11px; letter-spacing: 0.06em; }
+    .form-wrap { padding: 44px 16px 56px; }
+    .row { grid-template-columns: 1fr; gap: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="eyebrow">[ Acceso por invitación ]</div>
+  <img class="logo" src="../assets/logo-cepa.png" alt="Cepa Club">
+  <h1>Solicitud de admisión</h1>
+  <p class="lede">Dejanos tus datos y un curador de la cava te contacta para acompañarte, con o sin Reprocann.</p>
+  <div class="steps" aria-label="Cómo sigue">
+    <div class="step"><span class="num">I.</span><p>Completás la solicitud</p></div>
+    <div class="step"><span class="num">II.</span><p>Te contactamos en 24 hs</p></div>
+    <div class="step"><span class="num">III.</span><p>Reprocann y membresía</p></div>
+  </div>
+</header>
+
+<main class="form-wrap">
+  <div class="form-head">
+    <div class="eyebrow">Tus datos</div>
+    <h2>Pedí tu lugar en la cava</h2>
+    <p class="intro">Lleva menos de un minuto. Tu solicitud la ve solamente el equipo del club.</p>
+  </div>
+
+  <form name="solicitud" method="POST" action="/solicitud/?enviado=1" data-netlify="true" netlify-honeypot="empresa" novalidate>
+    <input type="hidden" name="form-name" value="solicitud">
+    <input type="hidden" name="origen_qr" id="origen_qr" value="directo">
+    <p class="hp"><label>No completar: <input name="empresa" tabindex="-1" autocomplete="off"></label></p>
+
+    <div class="field" data-f="nombre">
+      <label for="nombre">Nombre y apellido</label>
+      <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+      <div class="err">Contanos cómo te llamás.</div>
+    </div>
+
+    <div class="row">
+      <div class="field" data-f="edad">
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" name="edad" inputmode="numeric" min="18" max="110" required>
+        <div class="err">El club es solo para mayores de 18.</div>
+      </div>
+      <div class="field" data-f="telefono">
+        <label for="telefono">WhatsApp</label>
+        <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="261 555 1234" required>
+        <div class="err">Necesitamos un número para contactarte.</div>
+      </div>
+    </div>
+
+    <div class="field" data-f="email">
+      <label for="email">Correo electrónico <span class="opt">(opcional)</span></label>
+      <input type="email" id="email" name="email" autocomplete="email">
+      <div class="err">Revisá el correo.</div>
+    </div>
+
+    <div class="field" data-f="reprocann">
+      <span class="legend" id="lg-reprocann">¿Tenés Reprocann?</span>
+      <div class="choices" role="radiogroup" aria-labelledby="lg-reprocann">
+        <label class="choice"><input type="radio" name="reprocann" value="Vigente" required> Sí, vigente</label>
+        <label class="choice"><input type="radio" name="reprocann" value="En trámite o vencido"> En trámite o vencido</label>
+        <label class="choice"><input type="radio" name="reprocann" value="No, quiero gestionarlo"> No, quiero gestionarlo con el club</label>
+      </div>
+      <div class="err">Elegí una opción.</div>
+    </div>
+
+    <div class="field" data-f="ritmo">
+      <label for="ritmo">Ritmo de uso <span class="opt">(orientativo)</span></label>
+      <select id="ritmo" name="ritmo">
+        <option value="No sé todavía">No sé todavía</option>
+        <option value="Degustación">Eventual — Degustación</option>
+        <option value="Varietal">1–2 veces por mes — Varietal</option>
+        <option value="Reserva">1–2 veces por semana — Reserva</option>
+        <option value="Gran Reserva">3–4 veces por semana — Gran Reserva</option>
+        <option value="Colección Privada">Uso continuo — Colección Privada</option>
+      </select>
+    </div>
+
+    <div class="field" data-f="consent">
+      <label class="consent"><input type="checkbox" name="consentimiento" value="Sí" required> Soy mayor de 18 años y acepto que Cepa Club me contacte por WhatsApp o correo para gestionar mi admisión.</label>
+      <div class="err">Necesitamos tu confirmación para continuar.</div>
+    </div>
+
+    <button class="submit" type="submit">Enviar solicitud</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="wa-direct form-head">
+    <p>¿Preferís hablar directamente?</p>
+    <a class="btn-wa js-wa" href="https://wa.me/5492615686017?text=Hola%2C%20quisiera%20informaci%C3%B3n%20para%20sumarme%20a%20Cepa%20Club." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Escribinos por WhatsApp</a>
+  </div>
+
+  <div class="thanks" tabindex="-1">
+    <div class="emblem">❦</div>
+    <h2>Recibimos tu solicitud</h2>
+    <p>Un curador de la cava te va a escribir por WhatsApp dentro de las próximas 24 horas. Si querés adelantarte, escribinos ahora.</p>
+    <a class="btn-wa js-wa-sent" href="https://wa.me/5492615686017?text=Hola%2C%20acabo%20de%20enviar%20mi%20solicitud%20de%20admisi%C3%B3n%20a%20Cepa%20Club." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Continuar por WhatsApp</a>
+  </div>
+
+  <div class="assurance">
+    <p><b>Tus datos están protegidos.</b> No los compartimos con terceros y solo se usan para tu admisión.</p>
+    <p><b>Todo dentro de la ley.</b> El acceso se rige por la Ley 27.350 y requiere inscripción en Reprocann.</p>
+  </div>
+</main>
+
+<div class="foot"><a href="../">Conocé las membresías →</a></div>
+
+<script>
+  (function () {
+    var form = document.querySelector('form[name="solicitud"]');
+    var statusEl = form.querySelector('.form-status');
+    var btn = form.querySelector('.submit');
+
+    // Código de origen del QR: ?qr=Bodega1 → "Bodega1"
+    var params = new URLSearchParams(location.search);
+    if (params.get('enviado')) document.body.classList.add('sent');
+    var qr = params.get('qr');
+    if (qr) {
+      qr = qr.replace(/[^A-Za-z0-9_\-]/g, '').slice(0, 40);
+      if (qr) document.getElementById('origen_qr').value = qr;
+    }
+
+    function check(name) {
+      var box = form.querySelector('[data-f="' + name + '"]');
+      var ok = true;
+      if (name === 'nombre') ok = form.nombre.value.trim().length >= 3;
+      if (name === 'edad') { var e = parseInt(form.edad.value, 10); ok = e >= 18 && e <= 110; }
+      if (name === 'telefono') ok = form.telefono.value.replace(/\D/g, '').length >= 8;
+      if (name === 'email') ok = !form.email.value.trim() || form.email.checkValidity();
+      if (name === 'reprocann') ok = !!form.querySelector('input[name="reprocann"]:checked');
+      if (name === 'consent') ok = form.consentimiento.checked;
+      box.classList.toggle('invalid', !ok);
+      return ok;
+    }
+    var fields = ['nombre', 'edad', 'telefono', 'email', 'reprocann', 'consent'];
+
+    form.addEventListener('change', function (ev) {
+      var box = ev.target.closest('[data-f]');
+      if (box && box.classList.contains('invalid')) check(box.dataset.f);
+    });
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      statusEl.textContent = '';
+      var bad = fields.filter(function (f) { return !check(f); });
+      if (bad.length) {
+        var first = form.querySelector('[data-f="' + bad[0] + '"] input, [data-f="' + bad[0] + '"] select');
+        if (first) first.focus();
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        var wa = document.querySelector('.js-wa-sent');
+        var txt = 'Hola, soy ' + form.nombre.value.trim() + '. Acabo de enviar mi solicitud de admisión a Cepa Club (ref. ' + form.origen_qr.value + ').';
+        wa.href = 'https://wa.me/5492615686017?text=' + encodeURIComponent(txt);
+        document.body.classList.add('sent');
+        window.scrollTo(0, document.querySelector('.form-wrap').offsetTop - 10);
+        document.querySelector('.thanks').focus();
+      }).catch(function () {
+        statusEl.textContent = 'No pudimos enviar la solicitud. Revisá tu conexión e intentá de nuevo.';
+        btn.disabled = false;
+        btn.textContent = 'Enviar solicitud';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
