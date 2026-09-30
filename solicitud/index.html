@@ -293,7 +293,6 @@
 
   <form name="solicitud" method="POST" action="/solicitud/?enviado=1" data-netlify="true" netlify-honeypot="empresa" novalidate>
     <input type="hidden" name="form-name" value="solicitud">
-    <input type="hidden" name="origen_qr" id="origen_qr" value="directo">
     <p class="hp"><label>No completar: <input name="empresa" tabindex="-1" autocomplete="off"></label></p>
 
     <div class="field" data-f="nombre">
@@ -347,6 +346,8 @@
       <label class="consent"><input type="checkbox" name="consentimiento" value="Sí" required> Soy mayor de 18 años y acepto que Cepa Club me contacte por WhatsApp o correo para gestionar mi admisión.</label>
       <div class="err">Necesitamos tu confirmación para continuar.</div>
     </div>
+
+    <input type="hidden" name="origen_qr" id="origen_qr" value="directo">
 
     <button class="submit" type="submit">Enviar solicitud</button>
     <p class="form-status" role="status" aria-live="polite"></p>
