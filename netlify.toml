@@ -1,0 +1,18 @@
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+# Archivos internos que no deben servirse como páginas
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404"
+  status = 404
+  force = true
