@@ -15,6 +15,12 @@ export const config = { path: ["/control", "/control/"] };
 const sha256 = (s) => createHash("sha256").update(s).digest("hex");
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const fecha = (iso) => new Date(iso).toLocaleString("es-AR", { timeZone: "America/Argentina/Mendoza", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+// Aporte de membresía según el nivel elegido ("No sé todavía" comienza por Degustación)
+const APORTES = { "Degustación": 47000, "Varietal": 135000, "Reserva": 245000, "Gran Reserva": 340000, "Colección Privada": 410000 };
+const aporte = (ritmo) => {
+  const nivel = APORTES[ritmo] ? ritmo : "Degustación";
+  return `${nivel} · AR$ ${APORTES[nivel].toLocaleString("es-AR")}${nivel === "Degustación" ? " al año" : " / mes"}`;
+};
 const nombreSocio = (origen) => origen.startsWith("Socio-") ? origen.slice(6).replace(/([a-z])([A-Z])/g, "$1 $2") : origen;
 
 const HEADERS = {
@@ -77,6 +83,7 @@ export default async (req) => {
       <li class="card">
         <div class="top"><span class="nom">${esc(r.nombre)}</span><span class="f">${esc(fecha(r.fecha))}</span></div>
         <div class="meta">${esc(r.edad)} años · Reprocann: ${esc(r.reprocann)} · ${esc(r.ritmo)}</div>
+        <div class="meta">Aporte: <b>${esc(aporte(r.ritmo))}</b></div>
         <div class="meta">Vía <b>${esc(nombreSocio(r.origen))}</b></div>
         <div class="acc">${wa ? `<a href="${wa}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(r.telefono)}</a>` : ""}${r.email ? `<a href="mailto:${esc(r.email)}">${esc(r.email)}</a>` : ""}</div>
       </li>`;
